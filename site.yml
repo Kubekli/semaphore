@@ -1,7 +1,20 @@
 ---
-- hosts: my_servers
-  become: true
+- name: Update Netbird on endpoints
+  hosts: my_servers
+  become: yes
   tasks:
-    - name: Print OS info
-      ansible.builtin.package:
-        name: apache2
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade only netbird package
+      apt:
+        name: netbird
+        state: latest
+
+    - name: Restart Netbird service (optional)
+      systemd:
+        name: netbird
+        state: restarted
+        enabled: yes

@@ -1,6 +1,6 @@
 ---
 - name: Update Netbird on endpoints
-  hosts: my_servers
+  hosts: api
   become: yes
   tasks:
 

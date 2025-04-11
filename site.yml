@@ -12,9 +12,3 @@
       apt:
         name: netbird
         state: latest
-
-    - name: Restart Netbird service (optional)
-      systemd:
-        name: netbird
-        state: restarted
-        enabled: yes
